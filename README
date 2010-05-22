@@ -1,37 +1,36 @@
-== RubyRc4
+== RC4
 
-RubyRc4 is a pure Ruby implementation of the Rc4 algorithm.
+RC4 is a pure Ruby implementation of the Rc4 algorithm.
 
-== Using
 
-First, construct two new instances of RubyRc4 class:
+== Usage
 
-  encryptor = RubyRc4.new('mysecret_key')
-  decryptor = RubyRc4.new('mysecret_key')
+First require the gem:
 
-And encrypt any string you want:
+    require 'rc4' 
 
-  encrypted_data = encryptor.encrypt('secret_data')
-  
-Or decrypt it:
+To encrypt:
 
-  plain_text = decryptor.encrypt(encrypted_data)
+    key = "nuff rspec"
+    enc = RC4.new(key)
+    encrypted = enc.encrypt("super-cool-test")
 
-Also, you can use encrypt method destructively on the original string:
+To decrypt:
 
-    s = 'secret string'
-    encryptor.encrypt!(s)
+    dec = RC4.new(key)
+    decrypted = dec.decrypt(encrypted)
 
-Finally, you can check equality if you want:
+Since encrypt method is used for encryption and decryption, decrypt is
+just an alias to encrypt in order to make the usage more intuitive.
 
-  plain_text.eql?('secret_data')
+== Note
 
-== Shoes GUI
+The original algorithm implementation in Ruby by Max Prokopiev
+<max-prokopiev@yandex.ru>.
 
-Also library has Shoes GUI. You can find it in gui/main.rb
+I have then modified it to suit my needs, wrote test suite and gem
+packaged it using gem-this.
 
-== Feedback
+Thanks,
+Aleksandar Simic <asimic@gmail.com>
 
-If you have any questions, suggestions or just want to talk, just send me email <max-prokopiev@yandex.ru> .
-
-Enjoy!
