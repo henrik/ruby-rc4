@@ -1,15 +1,3 @@
-
-require 'spec/rake/spectask'
-
-Spec::Rake::SpecTask.new(:spec) do |t|
-  t.spec_files = Dir.glob('spec/**/*_spec.rb')
-  t.spec_opts << '--format nested'
-  # t.rcov = true
-end
-
-task :default => :spec
-
-
 require "rubygems"
 require "rake/gempackagetask"
 require "rake/rdoctask"
@@ -17,7 +5,7 @@ require "rake/rdoctask"
 require "spec"
 require "spec/rake/spectask"
 Spec::Rake::SpecTask.new do |t|
-  t.spec_opts = %w(--format specdoc --colour)
+  t.spec_opts = %w(--format nested --colour)
   t.libs = ["spec"]
 end
 
