@@ -30,8 +30,16 @@ class RC4
   private
 
   def process(text)
-    0.upto(text.length-1) {|i| text[i] = text[i] ^ round}
-    text
+    out = ""
+    0.upto(text.length-1) do |i|
+      if RUBY_VERSION >= "1.9.0"
+        char = text[i].ord
+      else
+        char = text[i]
+      end
+      out += (char ^ round).chr
+    end
+    out
   end
   
   def round
