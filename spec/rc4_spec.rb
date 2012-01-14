@@ -63,6 +63,17 @@ describe RC4 do
     decrypted = dec.decrypt('45A01F645FC35B383552544B9BF5'.lines.to_a.pack("H*"))
     decrypted.should match(/Attack at dawn/)
   end
+
+  it "should not modify the input" do
+    dec = RC4.new('Secret')
+    source = '45A01F645FC35B383552544B9BF5'.lines.to_a.pack("H*")
+    original_source = source.dup
+    decrypted = dec.decrypt(source)
+    source.should == original_source
+
+    original_decrypted = decrypted.dup
+    dec.encrypt(decrypted)
+    decrypted.should == original_decrypted
+  end
+
 end
-
-

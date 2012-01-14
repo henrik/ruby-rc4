@@ -5,15 +5,13 @@ class RC4
     @str = str
   end
 
-  def encrypt!(text)
+  def encrypt(text)
     process text
   end
 
-  def encrypt(text)
-    process text.dup
+  def decrypt(text)
+    process text
   end
-
-  alias_method :decrypt, :encrypt
 
   private
 
