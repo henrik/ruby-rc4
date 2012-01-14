@@ -53,6 +53,16 @@ describe RC4 do
     decrypted = dec.decrypt('45A01F645FC35B383552544B9BF5'.lines.to_a.pack("H*"))
     decrypted.should match(/Attack at dawn/)
   end
+
+  it "should be able to use the same instance more than once" do
+    dec = RC4.new('Secret')
+
+    decrypted = dec.decrypt('45A01F645FC35B383552544B9BF5'.lines.to_a.pack("H*"))
+    decrypted.should match(/Attack at dawn/)
+
+    decrypted = dec.decrypt('45A01F645FC35B383552544B9BF5'.lines.to_a.pack("H*"))
+    decrypted.should match(/Attack at dawn/)
+  end
 end
 
 
